@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mandiriapp/pages/input_cabang_page.dart';
 import 'package:flutter_mandiriapp/pages/input_kunjungan_page.dart';
 import 'package:flutter_mandiriapp/pages/login_page.dart';
 import 'package:flutter_mandiriapp/pages/main_page.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       '/': (context) => LoginPage(),
       'main-page': (context) => MainPage(),
       'input-kunjungan-page': (context) => InputKunjunganPage(),
+      'input-cabang-page': (context) => InputCabangPage(),
     });
   }
 }
