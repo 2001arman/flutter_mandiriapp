@@ -28,6 +28,7 @@ class CustomIconBottomNavbar extends StatelessWidget {
           children: [
             Image(
               image: AssetImage(imageUrl),
+              width: 30,
               color: context.watch<HomeCubit>().state == index
                   ? yellowMain
                   : Colors.white,
