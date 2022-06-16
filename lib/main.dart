@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mandiriapp/cubit/auth_cubit.dart';
 import 'package:flutter_mandiriapp/cubit/home_cubit.dart';
 import 'package:flutter_mandiriapp/pages/input_cabang_page.dart';
 import 'package:flutter_mandiriapp/pages/input_kunjungan_page.dart';
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => HomeCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AuthCubit(),
         ),
       ],
       child: MaterialApp(routes: {
