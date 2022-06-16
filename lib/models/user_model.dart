@@ -38,16 +38,16 @@ class UserModel {
 
 class Content {
   Content({
-    required this.nip,
-    required this.nama,
-    required this.idCabang,
-    required this.level,
+    this.nip,
+    this.nama,
+    this.idCabang,
+    this.level,
   });
 
-  String nip;
-  String nama;
-  String idCabang;
-  String level;
+  String? nip;
+  String? nama;
+  String? idCabang;
+  String? level;
 
   factory Content.fromJson(Map<String, dynamic> json) => Content(
         nip: json["nip"],
