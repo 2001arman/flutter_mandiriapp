@@ -24,7 +24,7 @@ class DetailCabangPage extends StatelessWidget {
               children: [
                 CustomCardSektor(
                   title: "Kandika Prima P",
-                  kunjungan: 4,
+                  kunjungan: "4",
                   canDelete: true,
                   onTap: () {
                     Navigator.push(
@@ -39,19 +39,19 @@ class DetailCabangPage extends StatelessWidget {
                 ),
                 CustomCardSektor(
                   title: "PIC Perusahaan",
-                  kunjungan: 3,
+                  kunjungan: "3",
                   canDelete: true,
                   onTap: () {},
                 ),
                 CustomCardSektor(
                   title: "PIC Perusahaan",
-                  kunjungan: 5,
+                  kunjungan: "5",
                   canDelete: true,
                   onTap: () {},
                 ),
                 CustomCardSektor(
                   title: "PIC Perusahaan",
-                  kunjungan: 6,
+                  kunjungan: "6",
                   canDelete: true,
                   onTap: () {},
                 ),
