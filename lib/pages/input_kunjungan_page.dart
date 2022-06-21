@@ -3,11 +3,17 @@ import 'package:flutter_mandiriapp/constans.dart';
 import 'package:flutter_mandiriapp/widgets/custom_date_picker.dart';
 import 'package:flutter_mandiriapp/widgets/custom_text_field.dart';
 
-class InputKunjunganPage extends StatelessWidget {
+class InputKunjunganPage extends StatefulWidget {
   const InputKunjunganPage({Key? key, this.isEdit = false}) : super(key: key);
 
   final bool isEdit;
 
+  @override
+  State<InputKunjunganPage> createState() => _InputKunjunganPageState();
+}
+
+class _InputKunjunganPageState extends State<InputKunjunganPage> {
+  String dropdownValue = 'Aksa';
   @override
   Widget build(BuildContext context) {
     final TextEditingController textEditingController = TextEditingController();
@@ -15,7 +21,7 @@ class InputKunjunganPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: blueMain,
         title: Text(
-          isEdit ? "Detail Kunjungan" : "Input Kunjungan",
+          widget.isEdit ? "Detail Kunjungan" : "Input Kunjungan",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
@@ -25,7 +31,7 @@ class InputKunjunganPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: blueMain,
-        child: isEdit
+        child: widget.isEdit
             ? Icon(Icons.edit)
             : Text(
                 "+",
@@ -60,11 +66,27 @@ class InputKunjunganPage extends StatelessWidget {
                   hint: "",
                   controller: textEditingController,
                 ),
-                CustomTextField(
-                  title: "Produk Holding",
-                  maxLines: 3,
-                  hint: "",
-                  controller: textEditingController,
+                DropdownButton<String>(
+                  value: dropdownValue,
+                  icon: const Icon(Icons.arrow_downward),
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.deepPurple),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownValue = newValue!;
+                    });
+                  },
+                  items: <String>['Aksa', 'Livin', 'Tabungan']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
                 CustomTextField(
                   title: "Potensi Perusahaan",
@@ -88,7 +110,7 @@ class InputKunjunganPage extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text("Foto Kunjungan"),
-                isEdit
+                widget.isEdit
                     ? Container(
                         width: double.infinity,
                         height: 120,
