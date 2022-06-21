@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_mandiriapp/cubit/kelapa_cubit.dart';
 import 'package:flutter_mandiriapp/pages/detail_cabang_page.dart';
+import 'package:flutter_mandiriapp/pages/detail_kunjungan_page.dart';
+import 'package:flutter_mandiriapp/widgets/column_builder.dart';
 import 'package:flutter_mandiriapp/widgets/custom_card_sektor.dart';
 
 import '../constans.dart';
@@ -22,64 +26,33 @@ class KunjunganPage extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: ListView(
           children: [
-            CustomCardSektor(
-              title: "PT. Suka Maju",
-              kunjungan: 4,
-              canDelete: true,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (((context) => DetailCabangPage(
-                          title: "PT. Suka Maju",
-                        ))),
-                  ),
-                );
-              },
-            ),
-            CustomCardSektor(
-              title: "PT. Suka Makmur",
-              kunjungan: 3,
-              canDelete: true,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (((context) => DetailCabangPage(
-                          title: "PT. Suka Makmur",
-                        ))),
-                  ),
-                );
-              },
-            ),
-            CustomCardSektor(
-              title: "PT. Sejahtera",
-              kunjungan: 5,
-              canDelete: true,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (((context) => DetailCabangPage(
-                          title: "PT. Sejahtera",
-                        ))),
-                  ),
-                );
-              },
-            ),
-            CustomCardSektor(
-              title: "PT. Makmur",
-              kunjungan: 6,
-              canDelete: true,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (((context) => DetailCabangPage(
-                          title: "PT. Makmur",
-                        ))),
-                  ),
-                );
+            BlocBuilder<KelapaCubit, KelapaState>(
+              builder: (context, state) {
+                if (state is KelapaLoading) {
+                  return const CircularProgressIndicator();
+                } else if (state is TambangSuccess) {
+                  return ColumnBuilder(
+                      itemBuilder: ((context, index) => CustomCardSektor(
+                          title:
+                              state.tambang.contentTambang[index].namaNasabah!,
+                          kunjungan:
+                              "Total Kunjungan: ${state.tambang.contentTambang[index].totalKunjungan}",
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: ((context) => DetailKunjunganPage(
+                                      content:
+                                          state.tambang.contentTambang[index],
+                                    )),
+                              ),
+                            );
+                          })),
+                      itemCount: state.tambang.contentTambang.length);
+                } else if (state is KelapaFailed) {
+                  return Text(state.error);
+                }
+                return const Text("Data kosong");
               },
             ),
           ],
