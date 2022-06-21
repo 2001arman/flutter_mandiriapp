@@ -8,13 +8,14 @@ class CustomCardSektor extends StatelessWidget {
       required this.kunjungan,
       required this.onTap,
       this.canDelete = false,
-      this.isSektor = false})
+      this.isSektor = false,
+      this.haveImage = true})
       : super(key: key);
 
   final String title;
-  final int kunjungan;
+  final String kunjungan;
   final VoidCallback onTap;
-  final bool canDelete, isSektor;
+  final bool canDelete, isSektor, haveImage;
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +27,20 @@ class CustomCardSektor extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 10),
         child: Row(
           children: [
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                image: DecorationImage(
-                  image: isSektor
-                      ? AssetImage("assets/mountain.png")
-                      : AssetImage("assets/user_circle.png"),
-                ),
-              ),
-            ),
+            haveImage
+                ? Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      image: DecorationImage(
+                        image: isSektor
+                            ? AssetImage("assets/mountain.png")
+                            : AssetImage("assets/user_circle.png"),
+                      ),
+                    ),
+                  )
+                : SizedBox(),
             SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +50,7 @@ class CustomCardSektor extends StatelessWidget {
                   title,
                   style: TextStyle(fontSize: 20),
                 ),
-                Text("Total kunjungan : $kunjungan"),
+                Text(kunjungan),
               ],
             ),
             canDelete
