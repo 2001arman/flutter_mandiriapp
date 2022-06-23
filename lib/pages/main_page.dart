@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mandiriapp/constans.dart';
 import 'package:flutter_mandiriapp/cubit/kelapa_cubit.dart';
+import 'package:flutter_mandiriapp/pages/input_file_page.dart';
 import 'package:flutter_mandiriapp/pages/kelapa_page.dart';
 import 'package:flutter_mandiriapp/pages/kunjungan_page.dart';
 import 'package:flutter_mandiriapp/pages/produk_page.dart';
@@ -14,6 +15,24 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: blueMain,
+        child: Text(
+          "+",
+          style: TextStyle(
+            fontSize: 30,
+            color: yellowMain,
+          ),
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: ((context) => InputFilePage()),
+            ),
+          );
+        },
+      ),
       appBar: AppBar(
         backgroundColor: blueMain,
         title: Text(
