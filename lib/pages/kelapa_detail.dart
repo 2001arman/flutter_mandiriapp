@@ -27,17 +27,37 @@ class KelapaDetail extends StatelessWidget {
         child: ListView(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomTextDetail(title: "Kabupaten/Kota", content: kelapaContent.kabupatenKota.toString()),
-            CustomTextDetail(title: "CIF", content: kelapaContent.cif.toString()),
-            CustomTextDetail(title: "Nama Koperasi", content: kelapaContent.namaKoperasi.toString()),
-            CustomTextDetail(title: "Kebun Inti", content: kelapaContent.kebunInti.toString()),
-            CustomTextDetail(title: "Luas Lahan", content: kelapaContent.luasLahan.toString()),
-            CustomTextDetail(title: "Jumlah Anggota", content: kelapaContent.jumlahAnggota.toString()),
-            CustomTextDetail(title: "Kode Cabang", content: kelapaContent.idCabang.toString()),
-            CustomTextDetail(title: "Nama Cabang", content: kelapaContent.namaKoperasi.toString()),
-            CustomTextDetail(title: "Check BMRI", content: kelapaContent.checkBmri.toString()),
-            CustomTextDetail(title: "Check Debitur", content: kelapaContent.checkDebitur.toString()),
-            CustomTextDetail(title: "Area", content: kelapaContent.area.toString()),
+            CustomTextDetail(
+                title: "Kabupaten/Kota",
+                content: kelapaContent.kabupatenKota.toString()),
+            CustomTextDetail(
+                title: "CIF", content: kelapaContent.cif.toString()),
+            CustomTextDetail(
+                title: "Nama Koperasi",
+                content: kelapaContent.namaKoperasi.toString()),
+            CustomTextDetail(
+                title: "Kebun Inti",
+                content: kelapaContent.kebunInti.toString()),
+            CustomTextDetail(
+                title: "Luas Lahan",
+                content: kelapaContent.luasLahan.toString()),
+            CustomTextDetail(
+                title: "Jumlah Anggota",
+                content: kelapaContent.jumlahAnggota.toString()),
+            CustomTextDetail(
+                title: "Kode Cabang",
+                content: kelapaContent.idCabang.toString()),
+            CustomTextDetail(
+                title: "Nama Cabang",
+                content: kelapaContent.namaKoperasi.toString()),
+            CustomTextDetail(
+                title: "Check BMRI",
+                content: kelapaContent.checkBmri.toString()),
+            CustomTextDetail(
+                title: "Check Debitur",
+                content: kelapaContent.checkDebitur.toString()),
+            CustomTextDetail(
+                title: "Area", content: kelapaContent.area.toString()),
           ],
         ),
       ),
