@@ -16,7 +16,13 @@ class _InputKunjunganPageState extends State<InputKunjunganPage> {
   String dropdownValue = 'Aksa';
   @override
   Widget build(BuildContext context) {
-    final TextEditingController textEditingController = TextEditingController();
+    TextEditingController controllerPIC = TextEditingController();
+    TextEditingController controllerTanggal = TextEditingController();
+    TextEditingController controllerPotensi = TextEditingController();
+    TextEditingController controllerTujuan = TextEditingController();
+    TextEditingController controllerHasil = TextEditingController();
+    TextEditingController controllerProfile = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: blueMain,
@@ -32,7 +38,10 @@ class _InputKunjunganPageState extends State<InputKunjunganPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: blueMain,
         child: widget.isEdit
-            ? Icon(Icons.edit)
+            ? Icon(
+              Icons.save,
+              color: yellowMain,
+            )
             : Text(
                 "+",
                 style: TextStyle(
@@ -41,7 +50,7 @@ class _InputKunjunganPageState extends State<InputKunjunganPage> {
                 ),
               ),
         onPressed: () {
-          Navigator.pushNamed(context, "input-kunjungan-page");
+          Navigator.pop(context);
         },
       ),
       body: Padding(
@@ -54,26 +63,21 @@ class _InputKunjunganPageState extends State<InputKunjunganPage> {
                 CustomTextField(
                   title: "P.I.C Perusahaan",
                   hint: "",
-                  controller: textEditingController,
+                  controller: controllerPIC,
                 ),
                 CustomDatePicker(
                   title: "Tanggal Kunjungan",
                   hint: "",
-                  controller: textEditingController,
-                ),
-                CustomTextField(
-                  title: "P.I.C Perusahaan",
-                  hint: "",
-                  controller: textEditingController,
+                  controller: controllerTanggal,
                 ),
                 DropdownButton<String>(
                   value: dropdownValue,
                   icon: const Icon(Icons.arrow_downward),
                   elevation: 16,
-                  style: const TextStyle(color: Colors.deepPurple),
+                  style: const TextStyle(color: Colors.blueAccent),
                   underline: Container(
                     height: 2,
-                    color: Colors.deepPurpleAccent,
+                    color: blueMain,
                   ),
                   onChanged: (String? newValue) {
                     setState(() {
@@ -91,22 +95,22 @@ class _InputKunjunganPageState extends State<InputKunjunganPage> {
                 CustomTextField(
                   title: "Potensi Perusahaan",
                   hint: "",
-                  controller: textEditingController,
+                  controller: controllerPotensi,
                 ),
                 CustomTextField(
                   title: "Tujuan Kunjungan",
                   hint: "",
-                  controller: textEditingController,
+                  controller: controllerTujuan,
                 ),
                 CustomTextField(
                   title: "Hasil Kunjungan",
                   hint: "",
-                  controller: textEditingController,
+                  controller: controllerHasil,
                 ),
                 CustomTextField(
                   title: "Profile Perusahaan",
                   hint: "",
-                  controller: textEditingController,
+                  controller: controllerProfile,
                 ),
                 SizedBox(height: 10),
                 Text("Foto Kunjungan"),

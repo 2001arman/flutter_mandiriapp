@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mandiriapp/constans.dart';
-import 'package:flutter_mandiriapp/widgets/custom_date_picker.dart';
 import 'package:flutter_mandiriapp/widgets/custom_text_field.dart';
 
 class InputCabangPage extends StatelessWidget {

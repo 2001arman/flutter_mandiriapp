@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mandiriapp/models/pertambangan_model.dart';
-import 'package:flutter_mandiriapp/pages/input_cabang_page.dart';
 import 'package:flutter_mandiriapp/pages/input_kunjungan_page.dart';
 import 'package:flutter_mandiriapp/widgets/custom_card_sektor.dart';
 
@@ -31,7 +30,7 @@ class DetailKunjunganPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: ((context) => InputKunjunganPage(
+                    builder: ((context) => const InputKunjunganPage(
                       isEdit: true,
                     )),
                   ),
@@ -57,7 +56,73 @@ class DetailKunjunganPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  "18",
+                  "2",
+                  style: TextStyle(
+                    fontSize: 100,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 40,
+                  color: blueMain,
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Total Kunjungan",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: yellowMain,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 160,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              border: Border.all(width: 1, color: blueMain),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "0",
+                  style: TextStyle(
+                    fontSize: 100,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 40,
+                  color: blueMain,
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Total Kunjungan",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: yellowMain,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 160,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              border: Border.all(width: 1, color: blueMain),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "2",
                   style: TextStyle(
                     fontSize: 100,
                     fontWeight: FontWeight.w600,
@@ -108,7 +173,14 @@ class DetailKunjunganPage extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, "input-cabang-page");
+            Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => const InputKunjunganPage(
+                      isEdit: true,
+                    )),
+                  ),
+                );
           },
         ),
         body: TabBarView(
