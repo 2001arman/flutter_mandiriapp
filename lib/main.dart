@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mandiriapp/cubit/auth_cubit.dart';
 import 'package:flutter_mandiriapp/cubit/home_cubit.dart';
+import 'package:flutter_mandiriapp/cubit/input_cubit.dart';
 import 'package:flutter_mandiriapp/cubit/kelapa_cubit.dart';
 import 'package:flutter_mandiriapp/pages/input_cabang_page.dart';
 import 'package:flutter_mandiriapp/pages/input_kunjungan_page.dart';
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => KelapaCubit(),
+        ),
+        BlocProvider(
+          create: (context) => InputCubit(),
         ),
       ],
       child: MaterialApp(routes: {
