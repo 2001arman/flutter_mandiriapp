@@ -4,7 +4,7 @@ require_once "connect.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $response   = array();
-    $query      = "SELECT * FROM pertambangan INNER JOIN nasabah ON pertambangan.id_nasabah = nasabah.id_nasabah INNER JOIN kunjungan ON nasabah.id_kunjungan = kunjungan.id_kunjungan";
+    $query      = "SELECT * FROM pertambangan INNER JOIN nasabah ON pertambangan.id_nasabah = nasabah.id_nasabah INNER JOIN kunjungan ON kunjungan.id_kunjungan = nasabah.id_nasabah";
     $hasil      = mysqli_query($con, $query);
 
     if(mysqli_num_rows($hasil)===0){
