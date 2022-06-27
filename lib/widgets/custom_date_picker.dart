@@ -8,11 +8,13 @@ class CustomDatePicker extends StatefulWidget {
       {Key? key,
       required this.title,
       required this.hint,
-      required this.controller})
+      required this.controller,
+      required this.controllerValue})
       : super(key: key);
 
   final String title, hint;
   final TextEditingController controller;
+  final TextEditingController controllerValue;
 
   @override
   State<CustomDatePicker> createState() => _CustomDatePickerState();
@@ -37,6 +39,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           children: [
             Flexible(
               child: TextField(
+                enabled: false,
                 controller: widget.controller,
                 decoration: InputDecoration(
                   hintText: widget.hint,
@@ -58,12 +61,14 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                     String tanggal =
                         DateFormat("EEEE, d MMMM yyyy", "id_ID").format(date);
                     widget.controller.text = tanggal;
+                    widget.controllerValue.text = date.toString();
                     setState(() {});
                   },
                   onConfirm: (date) {
                     String tanggal =
                         DateFormat("EEEE, d MMMM yyyy", "id_ID").format(date);
                     widget.controller.text = tanggal;
+                    widget.controllerValue.text = date.toString();
                     setState(() {});
                   },
                   currentTime: DateTime.now(),
@@ -73,8 +78,8 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
               child: Container(
                 width: 40,
                 height: 40,
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/calendar.png"),
                   ),
