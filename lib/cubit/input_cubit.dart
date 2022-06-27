@@ -45,4 +45,46 @@ class InputCubit extends Cubit<InputState> {
       emit(InputFailed(e.toString()));
     }
   }
+
+  void inputProduk({
+    required String namaProduk,
+    required String namaNasabah,
+  }) async {
+    try {
+      emit(InputLoading());
+      InputModel input = await ApiService().inputProduk(
+        namaNasabah: namaNasabah,
+        namaProduk: namaProduk,
+      );
+      if (input.status == "success") {
+        emit(InputSuccess(input));
+      } else {
+        emit(InputFailed(input.msg.toString()));
+      }
+    } catch (e) {
+      emit(InputFailed(e.toString()));
+    }
+  }
+
+  void inputSupplier({
+    required String namaSupplier,
+    required String tanggalSupplier,
+    required String kategori,
+  }) async {
+    try {
+      emit(InputLoading());
+      InputModel input = await ApiService().inputSupplier(
+        namaSupplier: namaSupplier,
+        tanggalSupplier: tanggalSupplier,
+        kategori: kategori,
+      );
+      if (input.status == "success") {
+        emit(InputSuccess(input));
+      } else {
+        emit(InputFailed(input.msg.toString()));
+      }
+    } catch (e) {
+      emit(InputFailed(e.toString()));
+    }
+  }
 }
