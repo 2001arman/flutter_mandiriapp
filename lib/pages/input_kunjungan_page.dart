@@ -39,9 +39,9 @@ class _InputKunjunganPageState extends State<InputKunjunganPage> {
         backgroundColor: blueMain,
         child: widget.isEdit
             ? Icon(
-              Icons.save,
-              color: yellowMain,
-            )
+                Icons.save,
+                color: yellowMain,
+              )
             : Text(
                 "+",
                 style: TextStyle(
@@ -69,6 +69,7 @@ class _InputKunjunganPageState extends State<InputKunjunganPage> {
                   title: "Tanggal Kunjungan",
                   hint: "",
                   controller: controllerTanggal,
+                  controllerValue: controllerTanggal,
                 ),
                 DropdownButton<String>(
                   value: dropdownValue,
