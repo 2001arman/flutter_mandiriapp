@@ -4,7 +4,7 @@ import 'package:flutter_mandiriapp/constans.dart';
 import 'package:flutter_mandiriapp/cubit/home_cubit.dart';
 import 'package:flutter_mandiriapp/pages/buyer_page.dart';
 import 'package:flutter_mandiriapp/pages/input_kunjungan_page.dart';
-import 'package:flutter_mandiriapp/pages/product_page.dart';
+import 'package:flutter_mandiriapp/pages/produk_page.dart';
 import 'package:flutter_mandiriapp/pages/supplier_page.dart';
 import 'package:flutter_mandiriapp/widgets/custom_card_sektor.dart';
 import 'package:flutter_mandiriapp/widgets/custom_icon_bottom_navbar.dart';
@@ -67,7 +67,7 @@ class DetailCabangPage extends StatelessWidget {
         case 0:
           return kunjunganSection();
         case 1:
-          return ProductPage();
+          return ProdukPage();
         case 2:
           return SupplierPage();
         case 3:
