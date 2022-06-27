@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mandiriapp/constans.dart';
 import 'package:flutter_mandiriapp/cubit/kelapa_cubit.dart';
 import 'package:flutter_mandiriapp/models/supplier_model.dart';
+import 'package:flutter_mandiriapp/pages/input_supplier_page.dart';
 import 'package:flutter_mandiriapp/widgets/column_builder.dart';
 import 'package:flutter_mandiriapp/widgets/custom_text_detail.dart';
 
@@ -23,21 +24,42 @@ class SupplierPage extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: blueMain,
+        child: Text(
+          "+",
+          style: TextStyle(
+            fontSize: 30,
+            color: yellowMain,
+          ),
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: ((context) => InputSupplierPage()),
+            ),
+          );
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: ListView(
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BlocBuilder<KelapaCubit, KelapaState>(
                   builder: (context, state) {
                     if (state is SupplierSuccess) {
-                      Text("halo");
-                      //   ColumnBuilder(itemBuilder: ((context, index) => CustomTextDetail(
-                      //   title: state.supplier.contentSupplier[index].namaSupplierBuyer!,
-                      //   content:
-                      //       "${state.supplier.contentSupplier[index].tanggal}",
-                      // )), itemCount: 2);
+                      return ColumnBuilder(
+                          itemBuilder: ((context, index) => CustomTextDetail(
+                                title: state.supplier.contentSupplier[index]
+                                    .namaSupplierBuyer!,
+                                content:
+                                    "${state.supplier.contentSupplier[index].tanggal}",
+                              )),
+                          itemCount: state.supplier.contentSupplier.length);
                     } else if (state is KelapaLoading) {
                       return const CircularProgressIndicator();
                     } else if (state is KelapaFailed) {
