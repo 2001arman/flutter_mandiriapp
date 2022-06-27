@@ -8,7 +8,7 @@ import 'package:flutter_mandiriapp/models/supplier_model.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  String endpoint = "https://b232-103-31-207-25.ap.ngrok.io/mandiri/";
+  String endpoint = "https://f1ec-114-125-205-68.ap.ngrok.io/mandiri/";
 
   Future<AdminModel> login(String nip, String password) async {
     try {
@@ -98,6 +98,44 @@ class ApiService {
         'checkBMRI': checkBMRI,
         'checkDebitur': checkDebitur,
         'area': area,
+      });
+      final Map<String, dynamic> parsed = jsonDecode(response.body);
+      InputModel input = InputModel.fromJson(parsed);
+      return input;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<InputModel> inputProduk({
+    required String namaProduk,
+    required String namaNasabah,
+  }) async {
+    try {
+      var url = Uri.parse(endpoint + 'input-produk.php');
+      var response = await http.post(url, body: {
+        'nama_produk': namaProduk,
+        'nama_nasabah': namaNasabah,
+      });
+      final Map<String, dynamic> parsed = jsonDecode(response.body);
+      InputModel input = InputModel.fromJson(parsed);
+      return input;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<InputModel> inputSupplier({
+    required String namaSupplier,
+    required String tanggalSupplier,
+    required String kategori,
+  }) async {
+    try {
+      var url = Uri.parse(endpoint + 'input-supplier.php');
+      var response = await http.post(url, body: {
+        'nama_supplier_buyer': namaSupplier,
+        'tanggal': tanggalSupplier,
+        'kategori': kategori,
       });
       final Map<String, dynamic> parsed = jsonDecode(response.body);
       InputModel input = InputModel.fromJson(parsed);
