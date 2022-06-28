@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mandiriapp/cubit/auth_cubit.dart';
 import 'package:flutter_mandiriapp/cubit/input_cubit.dart';
-import 'package:flutter_mandiriapp/pages/supplier_page.dart';
 import 'package:flutter_mandiriapp/widgets/custom_button.dart';
 import 'package:flutter_mandiriapp/widgets/custom_date_picker.dart';
 import 'package:flutter_mandiriapp/widgets/custom_text_field.dart';
@@ -85,6 +84,7 @@ class _InputSupplierPageState extends State<InputSupplierPage> {
                     if (state is InputSuccess) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          backgroundColor: blueMain,
                           content: Text(state.input.msg),
                         ),
                       );
@@ -92,6 +92,7 @@ class _InputSupplierPageState extends State<InputSupplierPage> {
                     } else if (state is InputFailed) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          backgroundColor: blueMain,
                           content: Text(state.error),
                         ),
                       );

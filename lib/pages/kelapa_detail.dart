@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mandiriapp/constans.dart';
 import 'package:flutter_mandiriapp/models/kelapa_model.dart';
-import 'package:flutter_mandiriapp/widgets/custom_text_detail.dart';
 import 'package:flutter_mandiriapp/widgets/custom_text_field.dart';
 
 class KelapaDetail extends StatefulWidget {
@@ -58,14 +57,13 @@ class _KelapaDetailState extends State<KelapaDetail> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: blueMain,
-        child: Text(
-          "+",
-          style: TextStyle(
-            fontSize: 30,
-            color: yellowMain,
-          ),
+        child: Icon(
+          Icons.save,
+          color: yellowMain,
+          size: 42,
         ),
         onPressed: () {},
+        tooltip: "Edit Detail",
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
@@ -78,43 +76,51 @@ class _KelapaDetailState extends State<KelapaDetail> {
                   title: "Kabuptaen/Kota",
                   hint: "",
                   controller: controllerKota,
+                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "CIF",
                   hint: "",
                   controller: controllerCIF,
+                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Nama Koperasi",
                   hint: "",
                   controller: controllerKoperasi,
+                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Kebun Inti",
                   hint: "",
                   controller: controllerKebun,
+                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Luas Lahan(Ha)",
                   hint: "",
                   controller: controllerLahan,
+                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Jumlah Anggota",
                   hint: "",
                   controller: controllerAnggota,
+                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Kode Cabang",
                   hint: "",
                   controller: controllerKodeCabang,
+                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Nama Cabang",
                   hint: "",
                   controller: controllerNamaCabang,
+                  isEdit: true,
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 10),
                 const Text("Check BMRI"),
                 DropdownButton<String>(
                   value: valueBMRI,
@@ -138,7 +144,7 @@ class _KelapaDetailState extends State<KelapaDetail> {
                     );
                   }).toList(),
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 10),
                 const Text("Check Debitur"),
                 DropdownButton<String>(
                   value: valueDebiture,
@@ -166,6 +172,7 @@ class _KelapaDetailState extends State<KelapaDetail> {
                   title: "Area",
                   hint: "",
                   controller: controllerArea,
+                  isEdit: true,
                 ),
               ],
             ),

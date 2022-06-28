@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mandiriapp/cubit/kelapa_cubit.dart';
-import 'package:flutter_mandiriapp/pages/detail_cabang_page.dart';
 import 'package:flutter_mandiriapp/pages/detail_kunjungan_page.dart';
 import 'package:flutter_mandiriapp/widgets/column_builder.dart';
 import 'package:flutter_mandiriapp/widgets/custom_card_sektor.dart';
+import 'package:flutter_mandiriapp/widgets/custom_detail_card.dart';
 
 import '../constans.dart';
 
@@ -16,7 +16,7 @@ class KunjunganPage extends StatelessWidget {
   Widget build(BuildContext context) {
     TabBar myTabs = const TabBar(
       tabs: [
-        Tab(text: "Cabang"),
+        Tab(text: "Nasabah"),
         Tab(text: "Detail"),
       ],
     );
@@ -62,40 +62,10 @@ class KunjunganPage extends StatelessWidget {
 
     Widget detailSection() {
       return Column(
-        children: [
-          Container(
-            width: double.infinity,
-            height: 160,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: blueMain),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "18",
-                  style: TextStyle(
-                    fontSize: 100,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 40,
-                  color: blueMain,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Total Kunjungan",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: yellowMain,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
+        children: const [
+          CustomDetailCard(jumlah: "2", title: "Total Kunjungan"),
+          CustomDetailCard(jumlah: "1", title: "Total Nasabah"),
+          CustomDetailCard(jumlah: "1", title: "Total Produk Holding"),
         ],
       );
     }
@@ -120,7 +90,7 @@ class KunjunganPage extends StatelessWidget {
           child: Text(
             "+",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 42,
               color: yellowMain,
             ),
           ),

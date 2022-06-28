@@ -67,6 +67,7 @@ class _InputProdukPageState extends State<InputProdukPage> {
                     if (state is InputSuccess) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          backgroundColor: blueMain,
                           content: Text(state.input.msg),
                         ),
                       );
@@ -74,6 +75,7 @@ class _InputProdukPageState extends State<InputProdukPage> {
                     } else if (state is InputFailed) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          backgroundColor: blueMain,
                           content: Text(state.error),
                         ),
                       );

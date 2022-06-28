@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_mandiriapp/constans.dart';
 import 'package:flutter_mandiriapp/cubit/auth_cubit.dart';
+import 'package:flutter_mandiriapp/pages/register_page.dart';
 import 'package:flutter_mandiriapp/widgets/custom_button.dart';
 import 'package:flutter_mandiriapp/widgets/custom_text_field.dart';
 
@@ -23,9 +25,9 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             CustomTextField(
-              title: "Username",
+              title: "NIP",
               controller: controllerUsername,
-              hint: "Masukkan username anda",
+              hint: "Masukkan NIP anda",
             ),
             CustomTextField(
               title: "Password",
@@ -42,7 +44,7 @@ class LoginPage extends StatelessWidget {
                 } else if (state is AuthFailed) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      // backgroundColor: kGreenLightColor,
+                      backgroundColor: blueMain,
                       content: Text(state.error),
                     ),
                   );
@@ -62,6 +64,20 @@ class LoginPage extends StatelessWidget {
                           password: controllerPassword.text,
                         );
                   },
+                );
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomButton(
+              text: "REGISTER",
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => RegisterPage()),
+                  ),
                 );
               },
             ),

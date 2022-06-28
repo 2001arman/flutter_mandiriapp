@@ -10,28 +10,35 @@ class InputFilePage extends StatelessWidget {
 
   List<PlatformFile>? _files;
 
-  void _openFile() async{
-    _files = (await FilePicker.platform.pickFiles(
-      type: FileType.any,
-      allowMultiple: false,
-      allowedExtensions: null
-    ))!.files;
-  }
-
-  void _uploadFile() async{
-    var uri = Uri.parse('https://a6e0-182-1-223-183.ap.ngrok.io/fileAPI/upload.php');
-    var request = http.MultipartRequest('POST', uri);
-    request.files.add(await http.MultipartFile.fromPath('file', _files!.first.path.toString()));
-    var reponse = await request.send();
-    if(reponse.statusCode == 200){
-      print('uploaded');
-    } else{
-      print('something error');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    void _openFile() async {
+      _files = (await FilePicker.platform.pickFiles(
+              type: FileType.any,
+              allowMultiple: false,
+              allowedExtensions: null))!
+          .files;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: blueMain,
+          content: Text("Memilih ${_files!.first.path.toString()}")));
+    }
+
+    void _uploadFile() async {
+      var uri = Uri.parse(
+          'https://5be1-114-125-181-203.ap.ngrok.io/fileAPI/upload.php');
+      var request = http.MultipartRequest('POST', uri);
+      request.files.add(await http.MultipartFile.fromPath(
+          'file', _files!.first.path.toString()));
+      var reponse = await request.send();
+      if (reponse.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: blueMain,
+            content: Text("Berhasil Mengirimkan File")));
+      } else {
+        print("something error");
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: blueMain,
@@ -58,23 +65,26 @@ class InputFilePage extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: (){
+              onPressed: () {
                 _openFile();
               },
               child: Text("Pilih File"),
+              style: ElevatedButton.styleFrom(primary: Color(0xFF003D79)),
             ),
             ElevatedButton(
-              onPressed: (){
+              onPressed: () {
                 _uploadFile();
               },
-              child: Text("Uploaded File"),
+              child: Text("Kirim File"),
+              style: ElevatedButton.styleFrom(primary: Color(0xFF003D79)),
             ),
           ],
         ),
       ),
     );
   }
-  void openFile(PlatformFile file){
+
+  void openFile(PlatformFile file) {
     OpenFile.open(file.path!);
   }
 }

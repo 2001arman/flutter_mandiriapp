@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mandiriapp/constans.dart';
 import 'package:flutter_mandiriapp/cubit/kelapa_cubit.dart';
-import 'package:flutter_mandiriapp/models/supplier_model.dart';
 import 'package:flutter_mandiriapp/pages/input_supplier_page.dart';
 import 'package:flutter_mandiriapp/widgets/column_builder.dart';
 import 'package:flutter_mandiriapp/widgets/custom_text_detail.dart';
@@ -29,7 +28,7 @@ class SupplierPage extends StatelessWidget {
         child: Text(
           "+",
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 42,
             color: yellowMain,
           ),
         ),

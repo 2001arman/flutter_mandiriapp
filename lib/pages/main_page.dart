@@ -16,11 +16,12 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        tooltip: "Input Excel",
         backgroundColor: blueMain,
         child: Text(
           "+",
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 42,
             color: yellowMain,
           ),
         ),
@@ -49,8 +50,8 @@ class MainPage extends StatelessWidget {
         child: ListView(
           children: [
             CustomCardSektor(
-              title: "Kelapa Sawit",
-              kunjungan: "Total Nasabah: 4",
+              title: "Kelapa Sawit(Koperasi)",
+              kunjungan: "Total Nasabah: 2",
               isSektor: true,
               onTap: () {
                 context.read<KelapaCubit>().getKelapa();
@@ -63,14 +64,8 @@ class MainPage extends StatelessWidget {
               },
             ),
             CustomCardSektor(
-              title: "Port",
-              kunjungan: "Total Nasabah: 12",
-              isSektor: true,
-              onTap: () {},
-            ),
-            CustomCardSektor(
               title: "Pertambangan",
-              kunjungan: "Total Nasabah: 4",
+              kunjungan: "Total Nasabah: 2",
               isSektor: true,
               onTap: () {
                 context.read<KelapaCubit>().getTambang();
@@ -86,7 +81,7 @@ class MainPage extends StatelessWidget {
             ),
             CustomCardSektor(
               title: "Produk",
-              kunjungan: "Total Nasabah: 12",
+              kunjungan: "Total Nasabah: 2",
               isSektor: true,
               onTap: () {
                 context.read<KelapaCubit>().getProduk();
@@ -100,7 +95,7 @@ class MainPage extends StatelessWidget {
             ),
             CustomCardSektor(
               title: "Supplier & Buyer",
-              kunjungan: "Total Nasabah: 12",
+              kunjungan: "Total Nasabah: 2",
               isSektor: true,
               onTap: () {
                 context.read<KelapaCubit>().getSupplier();

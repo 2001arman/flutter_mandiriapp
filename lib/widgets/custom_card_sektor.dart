@@ -66,7 +66,7 @@ class CustomCardSektor extends StatelessWidget {
                             color: redMain,
                           ),
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             "Hapus",
                             style: TextStyle(
                               color: Colors.white,

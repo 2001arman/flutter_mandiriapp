@@ -41,6 +41,7 @@ class _InputKunjunganPageState extends State<InputKunjunganPage> {
             ? Icon(
                 Icons.save,
                 color: yellowMain,
+                size: 42,
               )
             : Text(
                 "+",

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mandiriapp/models/pertambangan_model.dart';
 import 'package:flutter_mandiriapp/pages/input_kunjungan_page.dart';
 import 'package:flutter_mandiriapp/widgets/custom_card_sektor.dart';
+import 'package:flutter_mandiriapp/widgets/custom_detail_card.dart';
 
 import '../constans.dart';
 
@@ -18,7 +19,7 @@ class DetailKunjunganPage extends StatelessWidget {
       ],
     );
 
-    Widget cabangViewSection() {
+    Widget kunjunganViewSection() {
       return Padding(
         padding: const EdgeInsets.all(12),
         child: ListView(
@@ -31,8 +32,8 @@ class DetailKunjunganPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: ((context) => const InputKunjunganPage(
-                      isEdit: true,
-                    )),
+                          isEdit: true,
+                        )),
                   ),
                 );
               },
@@ -42,107 +43,20 @@ class DetailKunjunganPage extends StatelessWidget {
       );
     }
 
-    Widget detailSection() {
+    Widget produkHoldingSection() {
       return Column(
-        children: [
-          Container(
-            width: double.infinity,
-            height: 160,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: blueMain),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "2",
-                  style: TextStyle(
-                    fontSize: 100,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 40,
-                  color: blueMain,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Total Kunjungan",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: yellowMain,
-                    ),
-                  ),
-                )
-              ],
-            ),
+        children: const [
+          CustomDetailCard(
+            jumlah: "2",
+            title: "Livin",
           ),
-          Container(
-            width: double.infinity,
-            height: 160,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: blueMain),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "0",
-                  style: TextStyle(
-                    fontSize: 100,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 40,
-                  color: blueMain,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Total Kunjungan",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: yellowMain,
-                    ),
-                  ),
-                )
-              ],
-            ),
+          CustomDetailCard(
+            jumlah: "0",
+            title: "Aksa",
           ),
-          Container(
-            width: double.infinity,
-            height: 160,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: blueMain),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "2",
-                  style: TextStyle(
-                    fontSize: 100,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 40,
-                  color: blueMain,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Total Kunjungan",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: yellowMain,
-                    ),
-                  ),
-                )
-              ],
-            ),
+          CustomDetailCard(
+            jumlah: "2",
+            title: "Tabungan",
           ),
         ],
       );
@@ -168,25 +82,25 @@ class DetailKunjunganPage extends StatelessWidget {
           child: Text(
             "+",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 42,
               color: yellowMain,
             ),
           ),
           onPressed: () {
             Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: ((context) => const InputKunjunganPage(
+              context,
+              MaterialPageRoute(
+                builder: ((context) => const InputKunjunganPage(
                       isEdit: true,
                     )),
-                  ),
-                );
+              ),
+            );
           },
         ),
         body: TabBarView(
           children: [
-            cabangViewSection(),
-            detailSection(),
+            kunjunganViewSection(),
+            produkHoldingSection(),
           ],
         ),
       ),

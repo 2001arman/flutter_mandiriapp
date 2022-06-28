@@ -146,6 +146,7 @@ class _InputKelapaPageState extends State<InputKelapaPage> {
                     if (state is InputSuccess) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          backgroundColor: blueMain,
                           content: Text(state.input.msg),
                         ),
                       );
@@ -153,6 +154,7 @@ class _InputKelapaPageState extends State<InputKelapaPage> {
                     } else if (state is InputFailed) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          backgroundColor: blueMain,
                           content: Text(state.error),
                         ),
                       );

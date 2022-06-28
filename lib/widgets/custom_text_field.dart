@@ -6,12 +6,13 @@ class CustomTextField extends StatefulWidget {
       required this.title,
       required this.hint,
       this.isSecure = false,
+      this.isEdit = false,
       required this.controller,
       this.maxLines = 1})
       : super(key: key);
 
   final String title, hint;
-  final bool isSecure;
+  final bool isSecure, isEdit;
   final TextEditingController controller;
   final int maxLines;
 
@@ -27,8 +28,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 10),
-        Text(widget.title),
-        SizedBox(height: 10),
+        Text(
+          widget.title,
+          style: const TextStyle(
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        SizedBox(height: 5),
         widget.isSecure
             ? TextField(
                 controller: widget.controller,
@@ -69,6 +75,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
+                readOnly: widget.isEdit,
               ),
       ],
     );
