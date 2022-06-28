@@ -8,7 +8,7 @@ import 'package:flutter_mandiriapp/models/supplier_model.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  String endpoint = "https://2831-103-31-207-25.ap.ngrok.io/mandiri/";
+  String endpoint = "https://19b1-114-125-183-189.ap.ngrok.io/mandiri/";
 
   Future<AdminModel> login(String nip, String password) async {
     try {
@@ -47,10 +47,12 @@ class ApiService {
     }
   }
 
-  Future<ProdukModel> getDataProduct() async {
+  Future<ProdukModel> getDataProduct(String nama) async {
     try {
       var url = Uri.parse(endpoint + "get-produk.php");
-      var response = await http.post(url);
+      var response = await http.post(url, body: {
+        'nama': nama,
+      });
       final Map<String, dynamic> parsed = jsonDecode(response.body);
       ProdukModel produk = ProdukModel.fromJson(parsed);
       return produk;
@@ -107,6 +109,44 @@ class ApiService {
     }
   }
 
+  Future<InputModel> updateKelapa({
+    required String id,
+    required String kota,
+    required String cif,
+    required String namaKoperasi,
+    required String kebunInti,
+    required String luasLahan,
+    required String jumlahAnggota,
+    required String kodeCabang,
+    required String namaCabang,
+    required String checkBMRI,
+    required String checkDebitur,
+    required String area,
+  }) async {
+    try {
+      var url = Uri.parse(endpoint + 'update-kelapa.php');
+      var response = await http.post(url, body: {
+        'id': id,
+        'kota': kota,
+        'cif': cif,
+        'namaKoperasi': namaKoperasi,
+        'kebunInti': kebunInti,
+        'luasLahan': luasLahan,
+        'jumlahAnggota': jumlahAnggota,
+        'kodeCabang': kodeCabang,
+        'namaCabang': namaCabang,
+        'checkBMRI': checkBMRI,
+        'checkDebitur': checkDebitur,
+        'area': area,
+      });
+      final Map<String, dynamic> parsed = jsonDecode(response.body);
+      InputModel input = InputModel.fromJson(parsed);
+      return input;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<InputModel> inputProduk({
     required String namaProduk,
     required String namaNasabah,
@@ -137,6 +177,23 @@ class ApiService {
         'tanggal': tanggalSupplier,
         'kategori': kategori,
       });
+      final Map<String, dynamic> parsed = jsonDecode(response.body);
+      InputModel input = InputModel.fromJson(parsed);
+      return input;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<InputModel> deleteKelapa({
+    required String id,
+  }) async {
+    try {
+      var url = Uri.parse(endpoint + 'delete-kelapa.php');
+      var response = await http.post(url, body: {
+        'id': id,
+      });
+      print(response.body);
       final Map<String, dynamic> parsed = jsonDecode(response.body);
       InputModel input = InputModel.fromJson(parsed);
       return input;
