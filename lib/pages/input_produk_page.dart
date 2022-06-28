@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mandiriapp/cubit/auth_cubit.dart';
 import 'package:flutter_mandiriapp/cubit/input_cubit.dart';
 import 'package:flutter_mandiriapp/widgets/custom_button.dart';
+import 'package:flutter_mandiriapp/widgets/custom_text_field.dart';
 
 import '../constans.dart';
 
@@ -15,6 +16,7 @@ class InputProdukPage extends StatefulWidget {
 
 class _InputProdukPageState extends State<InputProdukPage> {
   String valueProduk = 'Livin';
+  TextEditingController controllerNama = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +63,11 @@ class _InputProdukPageState extends State<InputProdukPage> {
                     );
                   }).toList(),
                 ),
+                CustomTextField(
+                  title: "Nama Nasabah",
+                  hint: "",
+                  controller: controllerNama,
+                ),
                 const SizedBox(height: 20),
                 BlocConsumer<InputCubit, InputState>(
                   listener: (context, state) {
@@ -85,19 +92,12 @@ class _InputProdukPageState extends State<InputProdukPage> {
                     if (state is InputLoading) {
                       return const Center(child: CircularProgressIndicator());
                     }
-                    return BlocBuilder<AuthCubit, AuthState>(
-                      builder: (context, state) {
-                        if (state is AuthSuccess) {
-                          return CustomButton(
-                            text: "Tambah Data",
-                            onTap: () {
-                              context.read<InputCubit>().inputProduk(
-                                  namaProduk: valueProduk,
-                                  namaNasabah: state.user.content!.namaAdmin!);
-                            },
-                          );
-                        }
-                        return CustomButton(text: "Tambah Data", onTap: () {});
+                    return CustomButton(
+                      text: "Tambah Data",
+                      onTap: () {
+                        context.read<InputCubit>().inputProduk(
+                            namaProduk: valueProduk,
+                            namaNasabah: controllerNama.text);
                       },
                     );
                   },
