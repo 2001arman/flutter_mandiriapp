@@ -4,7 +4,8 @@ require_once "connect.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $response   = array();
-    $query      = "SELECT * FROM `produk`";
+    $nama       = $_POST['nama'];
+    $query      = "SELECT * FROM `produk` WHERE `nama_produk` = '$nama'";
     $hasil      = mysqli_query($con, $query);
 
     if(mysqli_num_rows($hasil)===0){
