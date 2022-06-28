@@ -84,7 +84,6 @@ class MainPage extends StatelessWidget {
               kunjungan: "Total Nasabah: 2",
               isSektor: true,
               onTap: () {
-                context.read<KelapaCubit>().getProduk();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
