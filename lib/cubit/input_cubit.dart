@@ -46,6 +46,46 @@ class InputCubit extends Cubit<InputState> {
     }
   }
 
+  void updateKelapa({
+    required String id,
+    required String kota,
+    required String cif,
+    required String namaKoperasi,
+    required String kebunInti,
+    required String luasLahan,
+    required String jumlahAnggota,
+    required String kodeCabang,
+    required String namaCabang,
+    required String checkBMRI,
+    required String checkDebitur,
+    required String area,
+  }) async {
+    try {
+      emit(InputLoading());
+      InputModel input = await ApiService().updateKelapa(
+        id: id,
+        kota: kota,
+        cif: cif,
+        namaKoperasi: namaKoperasi,
+        kebunInti: kebunInti,
+        luasLahan: luasLahan,
+        jumlahAnggota: jumlahAnggota,
+        kodeCabang: kodeCabang,
+        namaCabang: namaCabang,
+        checkBMRI: checkBMRI,
+        checkDebitur: checkDebitur,
+        area: area,
+      );
+      if (input.status == "success") {
+        emit(InputSuccess(input));
+      } else {
+        emit(InputFailed(input.msg.toString()));
+      }
+    } catch (e) {
+      emit(InputFailed(e.toString()));
+    }
+  }
+
   void inputProduk({
     required String namaProduk,
     required String namaNasabah,
@@ -78,6 +118,20 @@ class InputCubit extends Cubit<InputState> {
         tanggalSupplier: tanggalSupplier,
         kategori: kategori,
       );
+      if (input.status == "success") {
+        emit(InputSuccess(input));
+      } else {
+        emit(InputFailed(input.msg.toString()));
+      }
+    } catch (e) {
+      emit(InputFailed(e.toString()));
+    }
+  }
+
+  void deleteKelapa(String id) async {
+    try {
+      emit(InputLoading());
+      InputModel input = await ApiService().deleteKelapa(id: id);
       if (input.status == "success") {
         emit(InputSuccess(input));
       } else {
