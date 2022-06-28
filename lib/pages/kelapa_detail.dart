@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mandiriapp/constans.dart';
+import 'package:flutter_mandiriapp/cubit/input_cubit.dart';
 import 'package:flutter_mandiriapp/models/kelapa_model.dart';
 import 'package:flutter_mandiriapp/widgets/custom_text_field.dart';
 
@@ -62,7 +64,22 @@ class _KelapaDetailState extends State<KelapaDetail> {
           color: yellowMain,
           size: 42,
         ),
-        onPressed: () {},
+        onPressed: () {
+          context.read<InputCubit>().updateKelapa(
+                id: widget.kelapaContent.idKelapaSawit.toString(),
+                kota: controllerKota.text,
+                cif: controllerCIF.text,
+                namaKoperasi: controllerKoperasi.text,
+                kebunInti: controllerKebun.text,
+                luasLahan: controllerLahan.text,
+                jumlahAnggota: controllerAnggota.text,
+                kodeCabang: controllerKodeCabang.text,
+                namaCabang: controllerNamaCabang.text,
+                checkBMRI: valueBMRI,
+                checkDebitur: valueDebiture,
+                area: controllerArea.text,
+              );
+        },
         tooltip: "Edit Detail",
       ),
       body: Padding(
@@ -76,49 +93,41 @@ class _KelapaDetailState extends State<KelapaDetail> {
                   title: "Kabuptaen/Kota",
                   hint: "",
                   controller: controllerKota,
-                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "CIF",
                   hint: "",
                   controller: controllerCIF,
-                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Nama Koperasi",
                   hint: "",
                   controller: controllerKoperasi,
-                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Kebun Inti",
                   hint: "",
                   controller: controllerKebun,
-                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Luas Lahan(Ha)",
                   hint: "",
                   controller: controllerLahan,
-                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Jumlah Anggota",
                   hint: "",
                   controller: controllerAnggota,
-                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Kode Cabang",
                   hint: "",
                   controller: controllerKodeCabang,
-                  isEdit: true,
                 ),
                 CustomTextField(
                   title: "Nama Cabang",
                   hint: "",
                   controller: controllerNamaCabang,
-                  isEdit: true,
                 ),
                 const SizedBox(height: 10),
                 const Text("Check BMRI"),
@@ -172,7 +181,6 @@ class _KelapaDetailState extends State<KelapaDetail> {
                   title: "Area",
                   hint: "",
                   controller: controllerArea,
-                  isEdit: true,
                 ),
               ],
             ),
