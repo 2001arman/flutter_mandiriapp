@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mandiriapp/constans.dart';
+import 'package:flutter_mandiriapp/cubit/input_cubit.dart';
 import 'package:flutter_mandiriapp/cubit/kelapa_cubit.dart';
 import 'package:flutter_mandiriapp/pages/input_kelapa_page.dart';
 import 'package:flutter_mandiriapp/pages/kelapa_detail.dart';
@@ -67,6 +68,12 @@ class KelapaPage extends StatelessWidget {
                           ),
                         ),
                       );
+                    },
+                    canDelete: true,
+                    onDelete: () {
+                      context.read<InputCubit>().deleteKelapa(state
+                          .kelapa.content![index].idKelapaSawit
+                          .toString());
                     },
                     haveImage: false,
                   );
