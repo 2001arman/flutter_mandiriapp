@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_mandiriapp/cubit/input_cubit.dart';
+import 'package:flutter_mandiriapp/models/input_model.dart';
 import 'package:flutter_mandiriapp/models/kelapa_model.dart';
 import 'package:flutter_mandiriapp/models/pertambangan_model.dart';
 import 'package:flutter_mandiriapp/models/produk_model.dart';
@@ -39,10 +41,10 @@ class KelapaCubit extends Cubit<KelapaState> {
     }
   }
 
-  void getProduk() async {
+  void getProduk(String nama) async {
     try {
       emit(KelapaLoading());
-      ProdukModel produk = await ApiService().getDataProduct();
+      ProdukModel produk = await ApiService().getDataProduct(nama);
       if (produk.status == "success") {
         emit(ProductSuccess(produk));
       } else {
@@ -66,5 +68,4 @@ class KelapaCubit extends Cubit<KelapaState> {
       emit(KelapaFailed(e.toString()));
     }
   }
-
 }
